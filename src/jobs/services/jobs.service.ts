@@ -1,8 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { JOBS } from './jobs-data';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JobsService {
+  constructor(private readonly configService: ConfigService) {
+    const Port = this.configService.get<string>('PORT');
+    const ssl = this.configService.get<string>('ssl', 'on');
+    console.log(Port);
+    console.log(ssl);
+  }
+
   search(query: string) {
     if (!query || !query?.trim().length) {
       return JOBS;

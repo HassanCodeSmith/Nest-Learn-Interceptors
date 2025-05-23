@@ -4,6 +4,7 @@ import { JobsService } from './services/jobs.service';
 import { RecentSearchService } from './services/recent-search.service';
 
 @Module({
+  imports: [],
   controllers: [JobsController],
   providers: [JobsService, RecentSearchService],
 })
